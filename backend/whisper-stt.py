@@ -4,17 +4,15 @@ from e2enetworks.cloud import tir
 
 load_dotenv()
 
-access_token = os.getenv("E2E_TIR_ACCESS_TOKEN")
-if not access_token:
-    raise ValueError("E2E_TIR_ACCESS_TOKEN environment variable is not set.")
+team_id = os.getenv("E2E_TIR_TEAM_ID")
+project_id = os.getenv("E2E_TIR_PROJECT_ID")
 api_key = os.getenv("E2E_TIR_API_KEY")
-if not api_key:
-    raise ValueError("E2E_TIR_API_KEY environment variable is not set.")
+access_token = os.getenv("E2E_TIR_ACCESS_TOKEN")
 
-os.environ["E2E_TIR_ACCESS_TOKEN"] = access_token
-os.environ["E2E_TIR_API_KEY"] = api_key
-os.environ["E2E_TIR_PROJECT_ID"] = "5482"
-os.environ["E2E_TIR_TEAM_ID"] = "4459"
+if not (team_id and project_id and api_key and access_token):
+    raise ValueError("One or more environment variables are not set. "
+                     "Please ensure E2E_TIR_TEAM_ID, E2E_TIR_PROJECT_ID, "
+                     "E2E_TIR_API_KEY, and E2E_TIR_ACCESS_TOKEN are set.") 
 
 tir.init()
 client = tir.ModelAPIClient()
