@@ -2,3 +2,5 @@ e2enetworks
 openai
 dotenv
 scipy
+streamlit
+streamlit-option-menu
