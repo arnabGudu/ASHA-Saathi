@@ -9,3 +9,16 @@ PREGNANT_WOMEN = {
         {"id": "w004", "name": "Anita", "age": 24, "village": "Lakhanpur", "month": 2}
     ]
 }
+
+USERS = {
+    "asha001": {
+        "id": "asha001",
+        "name": "Rekha Devi",
+        "password": "asha123"
+    },
+    "asha002": {
+        "id": "asha002",
+        "name": "Radha Kumari",
+        "password": "asha456"
+    }
+}

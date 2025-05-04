@@ -4,3 +4,10 @@ dotenv
 scipy
 streamlit
 streamlit-option-menu
+streamlit-webrtc
+fastapi
+uvicorn
+pydantic 
+requests
+torch 
+transformers
