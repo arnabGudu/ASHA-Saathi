@@ -2,14 +2,15 @@ import os
 from dotenv import load_dotenv
 from e2enetworks.cloud import tir
 
-def get_transcript(file: str = "conversation.wav"):
-
+def get_transcript(file: str = "data/conversation.wav"):
     load_dotenv()
 
     team_id = os.getenv("E2E_TIR_TEAM_ID")
     project_id = os.getenv("E2E_TIR_PROJECT_ID")
     api_key = os.getenv("E2E_TIR_API_KEY")
     access_token = os.getenv("E2E_TIR_ACCESS_TOKEN")
+
+    print(f"Team ID: {team_id}")
 
     if not (team_id and project_id and api_key and access_token):
         raise ValueError("One or more environment variables are not set. "
@@ -26,11 +27,9 @@ def get_transcript(file: str = "conversation.wav"):
     }
 
     response = client.infer(model_name="whisper-large-v3", data=data)
-    print(f"Response 2: {response}")
     
-    if response[0]:  # Check if the first element is True
-        outputs = response[1].outputs  # Access the `outputs` attribute
+    if response[0]:
+        outputs = response[1].outputs
         generated_text_data = outputs[0].data[0]
-        print(generated_text_data)
     
     return generated_text_data

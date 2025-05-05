@@ -2,16 +2,12 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
-
 def get_suggestion(transcript: str):
-    
     load_dotenv()
 
-    # Read the token from environment variables
     access_token = os.getenv("E2E_TIR_ACCESS_TOKEN")
     if not access_token:
         raise ValueError("E2E_TIR_ACCESS_TOKEN environment variable is not set.")
-
 
     client = OpenAI(
     base_url = "https://infer.e2enetworks.net/project/p-5482/genai/llama3-med42-8b/v1",
@@ -39,7 +35,6 @@ Transcription -
 
     completion = client.chat.completions.create(
         model='llama3-med42-8b',
-        # messages=[{"role":"user","content":""}],
         messages = [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": transcript}
@@ -52,7 +47,5 @@ Transcription -
         stream=False
     )
 
-    print(f"Response 1: {completion}")
     data = completion.choices[0].message.content
-    
     return data
