@@ -2,3 +2,4 @@ __pycache__
 .env
 data/recordings/
 .DS_Store
+env/
