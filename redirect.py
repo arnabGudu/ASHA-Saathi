@@ -6,7 +6,7 @@ class RedirectHandler(BaseHTTPRequestHandler):
         self.send_header('Location', 'https://asha-saathi.streamlit.app')
         self.end_headers()
 
-server_address = ('', 8085)
+server_address = ('', 8501)
 httpd = HTTPServer(server_address, RedirectHandler)
-print("Redirecting on port 8085...")
+print("Redirecting on port 8501...")
 httpd.serve_forever()
