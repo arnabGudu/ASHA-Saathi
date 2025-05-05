@@ -1,7 +1,10 @@
+import requests
 import streamlit as st
 from services.audio_recorder import record_audio
 from services.whisper_stt import get_transcript
 from services.llama_med42 import get_suggestion
+
+base_url = st.secrets["BASE_URL"]
 
 def show():
     if "audio_path" not in st.session_state:
@@ -31,11 +34,8 @@ def show():
     if st.session_state.audio_path and st.button("🧠 Analyze Conversation"):
         st.info("Sending audio to backend and analyzing...")
 
-        transcript = get_transcript()
-        if transcript:
-            suggestions = get_suggestion(transcript)
+        response = requests.post(f"{base_url}/analyze", files={"file": open(st.session_state.audio_path, "rb")})
+        if response.status_code == 200:
+            data = response.json()
             st.success("✅ Analysis Complete")
-            st.markdown(suggestions)
-        else:
-            st.error("Analysis failed. Check backend logs.")
-
+            st.markdown(data)

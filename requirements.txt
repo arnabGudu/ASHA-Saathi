@@ -4,3 +4,7 @@ dotenv
 streamlit
 streamlit-webrtc
 streamlit_option_menu
+fastapi
+uvicorn 
+requests
+python-multipart
