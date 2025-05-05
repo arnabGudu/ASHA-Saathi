@@ -21,7 +21,8 @@ def page_router():
         st.warning("Unknown page")
 
 def on_change(key):
-    st.session_state.page = st.session_state[key]
+    if key in st.session_state:
+        st.session_state.page = st.session_state[key]
 
 def sidebar_menu():
     options = ["Dashboard", "Visit", "Logout"]
