@@ -28,6 +28,7 @@ def record_audio():
     if not webrtc_ctx.state.playing and audio_frames:
         audio_data = np.concatenate(audio_frames, axis=1)[0].astype(np.int16)
 
+        os.makedirs('data/recordings', exist_ok=True)
         file_path = os.path.join('data/recordings/', f"{uuid4().hex}.wav")
 
         with wave.open(file_path, 'wb') as wf:
