@@ -15,11 +15,13 @@ def show():
     for woman in women_list:
         col1, col2 = st.columns([4, 1])
         with col1:
-            st.markdown(f"""
-            **{woman['name']}** ({woman['age']} yrs)  
-            🏡 *{woman['village']}*  
-            🤰 *Pregnancy Month: {woman['month']}*
-            """)
+            st.markdown(
+                f"""
+                    **{woman['name']}** ({woman['age']} yrs)  
+                    🏡 *{woman['village']}*  
+                    🤰 *Pregnancy Month: {woman['month']}*
+                """
+            )
         with col2:
             if st.button("Visit", key=woman["id"]):
                 st.session_state["selected_patient"] = woman

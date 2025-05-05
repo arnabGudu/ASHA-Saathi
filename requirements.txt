@@ -3,3 +3,4 @@ openai
 dotenv
 streamlit
 streamlit-webrtc
+streamlit_option_menu

@@ -10,20 +10,21 @@ def get_transcript(file: str = "data/conversation.wav"):
     api_key = os.getenv("E2E_TIR_API_KEY")
     access_token = os.getenv("E2E_TIR_ACCESS_TOKEN")
 
-    print(f"Team ID: {team_id}")
-
     if not (team_id and project_id and api_key and access_token):
-        raise ValueError("One or more environment variables are not set. "
-                        "Please ensure E2E_TIR_TEAM_ID, E2E_TIR_PROJECT_ID, "
-                        "E2E_TIR_API_KEY, and E2E_TIR_ACCESS_TOKEN are set.") 
+        raise ValueError(
+            "One or more environment variables are not set. "
+            "Please ensure E2E_TIR_TEAM_ID, E2E_TIR_PROJECT_ID, "
+            "E2E_TIR_API_KEY, and E2E_TIR_ACCESS_TOKEN are set."
+        )
 
     tir.init()
     client = tir.ModelAPIClient()
-    data = {"input": file,
-            "language": "English",
-            "task": "transcribe",
-            "max_new_tokens": 400,
-            "return_timestamps": "none"
+    data = {
+        "input": file,
+        "language": "English",
+        "task": "transcribe",
+        "max_new_tokens": 400,
+        "return_timestamps": "none"
     }
 
     response = client.infer(model_name="whisper-large-v3", data=data)

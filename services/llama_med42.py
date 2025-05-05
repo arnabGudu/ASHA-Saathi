@@ -10,8 +10,8 @@ def get_suggestion(transcript: str):
         raise ValueError("E2E_TIR_ACCESS_TOKEN environment variable is not set.")
 
     client = OpenAI(
-    base_url = "https://infer.e2enetworks.net/project/p-5482/genai/llama3-med42-8b/v1",
-    api_key = access_token
+        base_url = "https://infer.e2enetworks.net/project/p-5482/genai/llama3-med42-8b/v1",
+        api_key = access_token
     )
 
     system_prompt = '''

@@ -15,11 +15,13 @@ def show():
         return
 
     st.subheader(f"Visiting: {patient['name']}")
-    st.write(f"""
-    - Age: {patient['age']}
-    - Village: {patient['village']}
-    - Pregnancy Month: {patient['month']}
-    """)
+    st.write(
+        f"""
+            - Age: {patient['age']}
+            - Village: {patient['village']}
+            - Pregnancy Month: {patient['month']}
+        """
+    )
 
     audio_path = record_audio()
 
@@ -34,15 +36,6 @@ def show():
             suggestions = get_suggestion(transcript)
             st.success("✅ Analysis Complete")
             st.markdown(suggestions)
-
-            # st.markdown("### 📊 Risk Analysis")
-            # st.json(data.get("structured_data", {}))
-
-            # st.markdown("### 🥗 Dietary Recommendations")
-            # st.write(data.get("diet_recommendations", "No recommendations"))
-
-            # st.markdown("### 🔊 Hindi Audio Advice")
-            # st.audio(data.get("audio_url"))  # Replace with actual audio output URL
         else:
             st.error("Analysis failed. Check backend logs.")
 
