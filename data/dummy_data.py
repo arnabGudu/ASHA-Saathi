@@ -11,10 +11,10 @@ PREGNANT_WOMEN = {
 }
 
 USERS = {
-    "admin": {
+    "asha001": {
         "id": "asha001",
         "name": "Rekha Devi",
-        "password": "admin"
+        "password": "asha123"
     },
     "asha002": {
         "id": "asha002",
